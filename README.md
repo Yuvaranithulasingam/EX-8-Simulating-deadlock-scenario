@@ -23,10 +23,11 @@ INSERT INTO Accounts VALUES(1, 1000.00);
 INSERT INTO Accounts VALUES(2, 2500.00);
 ```
 ## OUTPUT:
-image
+![image](https://github.com/Yuvaranithulasingam/EX-8-Simulating-deadlock-scenario/assets/121418522/54b879ee-90da-4aee-bc67-b578b213ac92)
 
-Now, let's set up the two transactions T1 and T2:
-Transaction T1
+## Now, let's set up the two transactions T1 and T2:
+### Transaction T1:
+```
 BEGIN TRANSACTION;
 UPDATE Accounts
 SET balance = balance - 200.00
@@ -37,7 +38,9 @@ UPDATE Accounts
 SET balance = balance + 200.00
 WHERE account_id = 2;
 COMMIT;
-Transaction T2
+```
+### Transaction T2:
+```
 BEGIN TRANSACTION;
 UPDATE Accounts
 SET balance = balance - 150.00
@@ -48,11 +51,13 @@ UPDATE Accounts
 SET balance = balance + 150.00
 WHERE account_id = 1;
 COMMIT;
-
+```
 ## OUTPUT:
+```
 Msg 1205, Level 13, State 51, Line 3
 Transaction (Process ID) was deadlocked
 on resourceswith anotherprocess and has been
 chosen as the deadlock victim. Rerun the transaction.
+```
 ## RESULT:
 Thus the program for the simulation of deadlock has been executed successfully
